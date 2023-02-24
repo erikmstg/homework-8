@@ -5,7 +5,7 @@ const getCategory = (req, res) => {
     `SELECT * FROM category ORDER BY category_id ASC`,
     null,
     (err, result) => {
-      if (err) console.log(err.message);
+      if (err) throw err.message;
 
       res.status(200).json(result.rows);
     }
@@ -22,7 +22,7 @@ const getFilmByIdCategory = (req, res) => {
     WHERE category.category_id = $1`,
     [id],
     (err, result) => {
-      if (err) console.log(err.message);
+      if (err) throw err.message;
 
       res.status(200).json(result.rows);
     }

@@ -15,11 +15,13 @@ pool.connect((error, result) => {
     });
 
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
     app.use("/film", filmRouter);
     app.use("/category", categoryRouter);
 
     app.listen(port, () => {
-      console.log("running at port", port);
+      console.log("server running at port", port);
     });
   } else {
     console.log(error.message);
